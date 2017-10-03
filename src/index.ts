@@ -1,1 +1,3 @@
-let test = 0
+import TileGrid from './TileGrid';
+
+new TileGrid(4)
