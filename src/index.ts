@@ -1,3 +1,3 @@
 import TileGrid from './TileGrid';
 
-new TileGrid(4)
+new TileGrid(3)
