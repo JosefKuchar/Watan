@@ -1,7 +1,7 @@
 import Tile from './Tile'
 import { Resources } from './Enums'
 
-export default class TileGrid {
+export default class Grid {
     size: number;
     tiles: Tile[][][];
     tileCount: number;
@@ -56,7 +56,6 @@ export default class TileGrid {
                             value = values.splice(Math.floor(Math.random() * values.length), 1)[0];
                         }
                         
-                        console.log(type, value);
                         grid[x][y][z] = new Tile(type, value);
                     }
                 }
