@@ -1,5 +1,5 @@
-import Tile from './Tile'
-import { Resources } from './Enums'
+import Tile from './Tile';
+import { Resources, Directions } from './Enums';
 
 export default class Grid {
     size: number;
@@ -25,6 +25,14 @@ export default class Grid {
                 y <= -this.size || y >= this.size || // Y is in bounds
                 z <= -this.size || z >= this.size || // Z is in bounds
                 x + y + z !== 0); // Values are aligned correctly
+    }
+
+    placeRoad(x: number, y: number, z: number, edge: number) {
+        this.inBounds(x, y, z);
+    }
+
+    placeBuilding(x: number, y: number, z: number, vertex: number) {
+        this.inBounds(x, y, z);
     }
 
     private calculateTileCount() {

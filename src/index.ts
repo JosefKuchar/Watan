@@ -1,6 +1,8 @@
-const app = require('express');
+const express = require('express');
+const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const path = require('path');
 
 import Game from './Game';
 
@@ -10,9 +12,15 @@ io.on('connection', (socket: any) => {
     });
 });
 
+app.get('/', (request: any, response: any) => {
+    response.sendFile(path.resolve('public/index.html'));
+});
+
 server.listen(3000);
 
-new Game();
+
+
+new Game(0, []);
 
 
 //let last = Date.now();
@@ -24,4 +32,4 @@ function loop() {
     process.nextTick(loop);
 }
 
-process.nextTick(loop);
+//process.nextTick(loop);
