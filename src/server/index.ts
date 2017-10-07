@@ -13,7 +13,7 @@ io.on('connection', (socket: any) => {
 });
 
 app.get('/', (request: any, response: any) => {
-    response.sendFile(path.resolve('public/index.html'));
+    response.sendFile(path.resolve('dist/client/index.html'));
 });
 
 server.listen(3000);

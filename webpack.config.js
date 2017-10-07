@@ -7,7 +7,7 @@ module.exports = {
         'watan.min': './src/client/index.ts'
     },
     output: {
-        path: path.resolve('_bundles'),
+        path: path.resolve('dist/client/bundle'),
         filename: '[name].js',
         libraryTarget: 'umd',
         library: 'watan',
@@ -29,5 +29,9 @@ module.exports = {
             test: /\.tsx?$/,
             loader: 'awesome-typescript-loader?configFileName=tsconfig.client.json'
         }]
+    },
+    externals: {
+        "Phaser": "Phaser",
+        "socket.io-client": "socket.io-client"
     }
 }
