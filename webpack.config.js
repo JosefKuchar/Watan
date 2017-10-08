@@ -34,6 +34,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
             sourceMap: true,
+            comments: false,
             include: /\.js$/,
         })
     ],
@@ -42,7 +43,6 @@ module.exports = {
             { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
             { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
             { test: /p2\.js/, use: ['expose-loader?p2'] },
-            { test: /socket\.io\.js/, use: 'expose-loader?socket.io-client'},
             { test: /\.tsx?$/, use: 'awesome-typescript-loader?configFileName=tsconfig.client.json'},
         ]
     },

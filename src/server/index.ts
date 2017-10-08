@@ -7,6 +7,8 @@ const path = require('path');
 import Game from './Game';
 
 io.on('connection', (socket: any) => {
+    console.log("New client!");
+
     socket.on('disconnect', () => {
 
     });
