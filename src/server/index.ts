@@ -16,6 +16,7 @@ app.get('/', (request: any, response: any) => {
     response.sendFile(path.resolve('dist/client/index.html'));
 });
 
+app.use(express.static(path.resolve('dist/client')));
 server.listen(3000);
 
 

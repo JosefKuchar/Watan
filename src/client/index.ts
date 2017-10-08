@@ -1,3 +1,5 @@
+require('pixi');
+require('p2');
 import {ANGLE_DOWN} from 'phaser-ce';
 import * as io from 'socket.io-client';
 
