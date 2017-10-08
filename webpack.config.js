@@ -20,9 +20,6 @@ module.exports = {
         //library: 'watan',
         //umdNamedDefine: true
     },
-    resolve: {
-        extensions: ['.ts', '.tsx']
-    },
     devtool: 'cheap-source-map',
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({ 
@@ -43,7 +40,7 @@ module.exports = {
             { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
             { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
             { test: /p2\.js/, use: ['expose-loader?p2'] },
-            { test: /\.tsx?$/, use: 'awesome-typescript-loader?configFileName=tsconfig.client.json'},
+            { test: [/\.ts/, /\.tsx/], use: 'awesome-typescript-loader?configFileName=tsconfig.client.json'},
         ]
     },
     node: {
@@ -56,6 +53,7 @@ module.exports = {
           'phaser': phaser,
           'pixi': pixi,
           'p2': p2
-        }
+        },
+        extensions: ['.ts', '.tsx', '.js', '.json']
     }
 }
