@@ -1,10 +1,16 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const phaserModule = path.join(__dirname, '/node_modules/phaser-ce/')
+const phaser = path.join(phaserModule, 'build/custom/phaser-split.js')
+const pixi = path.join(phaserModule, 'build/custom/pixi.js')
+const p2 = path.join(phaserModule, 'build/custom/p2.js')
+
 module.exports = {
     entry: {
         'watan': './src/client/index.ts',
-        'watan.min': './src/client/index.ts'
+        'watan.min': './src/client/index.ts',
+        vendor: ['pixi', 'p2', 'phaser']
     },
     output: {
         path: path.resolve('dist/client/bundle'),
@@ -16,7 +22,7 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.tsx']
     },
-    devtool: 'source-map',
+    devtool: 'cheap-source-map',
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
@@ -25,20 +31,24 @@ module.exports = {
         })
     ],
     module: {
-        loaders: [
-            { test: /pixi\.js/, loader: 'expose-loader?PIXI' },
-            { test: /phaser-split\.js$/, loader: 'expose-loader?Phaser' },
-            { test: /p2\.js/, loader: 'expose-loader?p2' },
-            { test: /socket\.io\.js/, loader: 'expose-loader?socket.io-client'},
-            { test: /\.tsx?$/, loader: 'awesome-typescript-loader?configFileName=tsconfig.client.json'},
+        rules: [
+            { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
+            { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
+            { test: /p2\.js/, use: ['expose-loader?p2'] },
+            { test: /socket\.io\.js/, use: 'expose-loader?socket.io-client'},
+            { test: /\.tsx?$/, use: 'awesome-typescript-loader?configFileName=tsconfig.client.json'},
         ]
     },
+    node: {
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty'
+      },
     resolve: {
         alias: {
-            'PIXI': path.resolve('node_modules/phaser-ce/build/custom/pixi.js'),
-            'p2': path.resolve('node_modules/phaser-ce/build/custom/p2.js'),
-            'Phaser': path.resolve('node_modules/phaser-ce/build/custom/phaser-split.js'),
-            'socket.io-client': path.resolve('node_modules/socket.io-client/dist/socket.io.js')
+          'phaser': phaser,
+          'pixi': pixi,
+          'p2': p2
         }
     }
 }

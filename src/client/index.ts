@@ -1,7 +1,7 @@
 // Include libraries required by phaser
-const Phaser = require('phaser-ce');
-require('pixi');
-require('p2');
+import 'pixi'
+import 'p2'
+import * as Phaser from 'phaser-ce'
 
 
 
