@@ -8,26 +8,33 @@ const p2 = path.join(phaserModule, 'build/custom/p2.js')
 
 module.exports = {
     entry: {
-        'watan': './src/client/index.ts',
-        'watan.min': './src/client/index.ts',
-        vendor: ['pixi', 'p2', 'phaser']
+        app: [
+            path.resolve('./src/client/index.ts')
+        ],
+        vendor: ['pixi', 'p2', 'phaser', 'socket.io-client']
     },
     output: {
         path: path.resolve('dist/client/bundle'),
-        filename: '[name].js',
-        libraryTarget: 'umd',
-        library: 'watan',
-        umdNamedDefine: true
+        filename: '[name].bundle.js',
+        //libraryTarget: 'umd',
+        //library: 'watan',
+        //umdNamedDefine: true
     },
     resolve: {
         extensions: ['.ts', '.tsx']
     },
     devtool: 'cheap-source-map',
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin({ 
+            name: 'vendor'/* chunkName= */, 
+            filename: 'vendor.bundle.js', /* filename= */
+            minChunks: module => module.context && module.context.indexOf('node_modules') !== -1
+        }),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.optimize.UglifyJsPlugin({
             minimize: true,
             sourceMap: true,
-            include: /\.min\.js$/,
+            include: /\.js$/,
         })
     ],
     module: {
