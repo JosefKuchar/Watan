@@ -29,18 +29,16 @@ module.exports = {
             { test: /pixi\.js/, loader: 'expose-loader?PIXI' },
             { test: /phaser-split\.js$/, loader: 'expose-loader?Phaser' },
             { test: /p2\.js/, loader: 'expose-loader?p2' },
+            { test: /socket\.io\.js/, loader: 'expose-loader?socket.io-client'},
             { test: /\.tsx?$/, loader: 'awesome-typescript-loader?configFileName=tsconfig.client.json'},
         ]
     },
-    externals: {
-        "Phaser": "Phaser",
-        "socket.io-client": "socket.io-client"
-    },
     resolve: {
         alias: {
-            'pixi': path.resolve('node_modules/phaser-ce/build/custom/pixi.js'),
+            'PIXI': path.resolve('node_modules/phaser-ce/build/custom/pixi.js'),
             'p2': path.resolve('node_modules/phaser-ce/build/custom/p2.js'),
-            'phaser': path.resolve('node_modules/phaser-ce/build/custom/phaser-split.js'),
+            'Phaser': path.resolve('node_modules/phaser-ce/build/custom/phaser-split.js'),
+            'socket.io-client': path.resolve('node_modules/socket.io-client/dist/socket.io.js')
         }
     }
 }

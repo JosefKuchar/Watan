@@ -1,8 +1,13 @@
+// Include libraries required by phaser
+const Phaser = require('phaser-ce');
 require('pixi');
 require('p2');
-import {ANGLE_DOWN} from 'phaser-ce';
-import * as io from 'socket.io-client';
 
-console.log(ANGLE_DOWN * 2);
-io("127.0.0.1")
+
+
+new Phaser.Game(800, 600, Phaser.AUTO, '');
+
+//import {} from 'socket.io-client';
+
+//console.log(Socket);
 const test = 1;
