@@ -13,7 +13,7 @@ export default class Grid {
     }
 
     getTile(x: number, y: number, z: number) {
-        if (this.inBounds(x, y, z)) {
+        if (!this.inBounds(x, y, z)) {
             return null;
         }
 
