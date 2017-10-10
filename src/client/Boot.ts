@@ -1,6 +1,6 @@
-import * as Phaser from 'phaser-ce';
+import{ State } from 'phaser-ce';
 
-export default class Boot extends Phaser.State {
+export default class Boot extends State {
     init() {
         this.scale.scaleMode = Phaser.ScaleManager.RESIZE;
     }

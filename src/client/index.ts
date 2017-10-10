@@ -5,27 +5,29 @@ import 'p2';
 // Import phaser game framework
 import * as Phaser from 'phaser-ce';
 
-// Import socket.io client
-import * as io from 'socket.io-client';
-
 // Import states
 import Boot from './Boot';
 import Preload from './Preload';
+import Main from './Main';
 
-console.log(io());
-
-//console.log(Socket);
-const test = 1;
+// Import socket.io client
+import Client from './Client';
 
 class Game extends Phaser.Game {
+    socket: any;
+
     constructor() {
-        super('100%', '100%', Phaser.AUTO);
+        super('100%', '100%', Phaser.AUTO, null, '', false, true);
 
         this.state.add('Boot', Boot);
         this.state.add('Preload', Preload);
+        this.state.add('Main', Main);
 
         this.state.start('Boot');
     }
 }
 
+
+
+new Client();
 new Game();
