@@ -3,5 +3,6 @@ export const TileNames = [
     "brick-tile",
     "ore-tile",
     "wheat-tile",
-    "wood-tile"
+    "wood-tile",
+    "sand-tile"
 ];
