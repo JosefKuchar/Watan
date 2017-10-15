@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node dist/server/index.js",
     "build": "concurrently tsc webpack",
-    "watch": "concurrently \"tsc --watch\" \"webpack --watch\""
+    "watch": "concurrently \"tsc --watch\" \"webpack --watch\"",
+    "server-watch": "concurrently \"tsc --watch\" \"webpack --watch\" \"node dist/server/index.js\""
   },
   "author": "Josef Kuchař",
   "license": "ISC",

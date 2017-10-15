@@ -35,6 +35,14 @@ export default class Board {
                         let spriteName = TileNames[boardData.tiles[x][y][z].type];
                         let sprite: Sprite = this.tiles.create(posX, posY, spriteName);
 
+                        //sprite.anchor.x = 0.5;
+                        //sprite.anchor.y = 0.5;
+
+                        //this.game.add.text(500, 500, "TEST")
+                        let number = this.game.add.text(100, 100, boardData.tiles[x][y][z].value)
+
+                        sprite.addChild(number);
+
                         sprite.inputEnabled = true;
                         sprite.events.onInputOver.add(this.mouseOver);
                     }
